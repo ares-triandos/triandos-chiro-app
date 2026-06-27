@@ -24,6 +24,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7fedc120-16ce-4cfe-87b0-b7a33597bf40"
+      }
+    },
+    "owner": "ares.triandos"
   }
 }
