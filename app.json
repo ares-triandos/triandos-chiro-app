@@ -3,6 +3,7 @@
     "name": "Triandos Chiro",
     "slug": "triandos-chiro-app",
     "version": "0.1.0",
+    "projectId": "7fedc120-16ce-4cfe-87b0-b7a33597bf40",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
