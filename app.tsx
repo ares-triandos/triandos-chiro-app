@@ -6,14 +6,12 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.logoContainer}>
-          {/* Logo placeholder - will add actual logo */}
-          <View style={styles.logoPlaceholder}>
-            <Text style={styles.logoText}>⚕️</Text>
-          </View>
+          <Image
+            source={require('./assets/logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
         </View>
-        
-        <Text style={styles.title}>Triandos Chiro</Text>
-        <Text style={styles.subtitle}>Chiropractic & Acupuncture</Text>
       </View>
       
       <StatusBar style="auto" />
@@ -27,36 +25,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 40,
   },
   content: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   logoContainer: {
-    marginBottom: 40,
-  },
-  logoPlaceholder: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: '#f0f0f0',
+    width: 280,
+    height: 280,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
   },
-  logoText: {
-    fontSize: 60,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#1a1a1a',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#666666',
-    textAlign: 'center',
+  logo: {
+    width: '100%',
+    height: '100%',
   },
 });
