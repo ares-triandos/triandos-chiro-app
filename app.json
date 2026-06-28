@@ -14,7 +14,14 @@
     },
     "ios": {
       "supportsTabletMode": true,
-      "bundleIdentifier": "com.triandoschiro.app"
+      "bundleIdentifier": "com.triandoschiro.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSBonjourServiceTypes": [],
+        "NSLocalNetworkUsageDescription": "Local network access for clinic app features",
+        "NSMDNSServiceDescriptionSuffix": "Clinic App"
+      },
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
