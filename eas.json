@@ -6,13 +6,17 @@
   },
   "build": {
     "preview": {
+      "ios": {
+        "image": "macos-sequoia-15.3-xcode-16.2"
+      },
       "android": {
         "buildType": "apk"
       }
     },
     "production": {
       "ios": {
-        "simulator": false
+        "simulator": false,
+        "image": "macos-sequoia-15.3-xcode-16.2"
       },
       "android": {
         "buildType": "app-bundle"
