@@ -6,13 +6,17 @@
   },
   "build": {
     "preview": {
+      "ios": {
+        "image": "latest"
+      },
       "android": {
         "buildType": "apk"
       }
     },
     "production": {
       "ios": {
-        "simulator": false
+        "simulator": false,
+        "image": "latest"
       },
       "android": {
         "buildType": "app-bundle"
