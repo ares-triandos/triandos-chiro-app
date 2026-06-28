@@ -1,0 +1,50 @@
+Resolved "production" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
+No environment variables with visibility "Plain text" and "Sensitive" found for the "production" environment on EAS.
+
+
+
+✔ Using remote iOS credentials (Expo server)
+
+Distribution Certificate is not validated for non-interactive builds.
+Skipping Provisioning Profile validation on Apple Servers because we aren't authenticated.
+
+Project Credentials Configuration
+
+Project                   @ares.triandos/triandos-chiro-app
+Bundle Identifier         com.triandoschiro.app
+                          
+App Store Configuration   
+                          
+Distribution Certificate  
+Serial Number             1AA87385DF18118E50AA5C5FD05FF993
+Expiration Date           Mon, 26 Apr 2027 20:09:09 GMT+0100
+Apple Team                L82V95LG93 (NICK TRIANDOS (Individual))
+Updated                   2 months ago
+                          
+Provisioning Profile      
+Developer Portal ID       JQBRUY2ZQL
+Status                    active
+Expiration                Mon, 26 Apr 2027 20:09:09 GMT+0100
+Apple Team                L82V95LG93 (NICK TRIANDOS (Individual))
+Updated                   22 hours ago
+                          
+All credentials are ready to build @ares.triandos/triandos-chiro-app (com.triandoschiro.app)
+
+
+Compressing project files and uploading to EAS Build. Learn more: https://expo.fyi/eas-build-archive
+- Uploading to EAS Build (0 / 331 KB)
+✔ Uploaded to EAS 
+- Computing project fingerprint
+✔ Computed project fingerprint
+
+See logs: https://expo.dev/accounts/ares.triandos/projects/triandos-chiro-app/builds/d99a3c38-4295-4a73-9866-39719c5b1afa
+
+Waiting for build to complete. You can press Ctrl+C to exit.
+- Waiting for build to complete.
+✖ Build failed
+
+🍏 iOS build failed:
+The "Run fastlane" step failed because of an error in the Xcode build process. We automatically detected following errors in your Xcode build logs:
+- cannot find 'newArchEnabled' in scope
+- 'nil' requires a contextual type
+Refer to "Xcode Logs" below for additional, more detailed logs.
