@@ -1,0 +1,62 @@
+{
+  "name": "Triandos Chiro App - Expo",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "expo.expo-tools",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode-remote.remote-containers",
+        "github.copilot",
+        "github.copilot-chat"
+      ],
+      "settings": {
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true,
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "files.watcherExclude": {
+          "**/node_modules/**": true,
+          "**/.git/**": true,
+          "**/dist/**": true
+        }
+      }
+    }
+  },
+  "postCreateCommand": "npm install",
+  "postStartCommand": "npm start",
+  "remoteUser": "node",
+  "forwardPorts": [8081, 19000, 19001, 19002],
+  "portsAttributes": {
+    "8081": {
+      "label": "Expo Web",
+      "onAutoForward": "notify"
+    },
+    "19000": {
+      "label": "Expo Dev Server",
+      "onAutoForward": "notify"
+    },
+    "19001": {
+      "label": "Expo Debug",
+      "onAutoForward": "notify"
+    },
+    "19002": {
+      "label": "Expo Inspector",
+      "onAutoForward": "notify"
+    }
+  }
+}
