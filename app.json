@@ -21,7 +21,7 @@
         "NSLocalNetworkUsageDescription": "Local network access for clinic app features",
         "NSMDNSServiceDescriptionSuffix": "Clinic App"
       },
-      "buildNumber": "1"
+      "buildNumber": "2"
     },
     "plugins": [
       [
