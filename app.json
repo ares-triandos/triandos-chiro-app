@@ -23,20 +23,7 @@
       },
       "buildNumber": "2"
     },
-    "plugins": [
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "newArchEnabled": false,
-            "useFrameworks": "static"
-          },
-          "android": {
-            "newArchEnabled": false
-          }
-        }
-      ]
-    ],
+    "plugins": [],
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
