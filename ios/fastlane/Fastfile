@@ -5,6 +5,16 @@ platform :ios do
   lane :build_testflight do
     setup_ci if is_ci
 
+    # Get or create provisioning profiles for TestFlight
+    sigh(
+      app_identifier: "com.triandoschiro.app",
+      team_id: "L82V95LG93",
+      username: ENV["APPLE_ID"],
+      filename: "TriandosChiro.mobileprovision",
+      adhoc: false,
+      readonly: false
+    )
+
     build_app(
       workspace: "TriandosChiro.xcworkspace",
       scheme: "TriandosChiro",
@@ -15,13 +25,14 @@ platform :ios do
       export_options: {
         method: "app-store",
         teamID: "L82V95LG93",
-        signingStyle: "automatic"
+        signingStyle: "manual",
+        provisioningProfileSpecifier: "iOS App Store"
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
       skip_package_pkg: true,
-      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app -allowProvisioningUpdates"
+      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app"
     )
 
     upload_to_testflight(
@@ -41,6 +52,15 @@ platform :ios do
   lane :build_only do
     setup_ci if is_ci
 
+    sigh(
+      app_identifier: "com.triandoschiro.app",
+      team_id: "L82V95LG93",
+      username: ENV["APPLE_ID"],
+      filename: "TriandosChiro.mobileprovision",
+      adhoc: false,
+      readonly: false
+    )
+
     build_app(
       workspace: "TriandosChiro.xcworkspace",
       scheme: "TriandosChiro",
@@ -51,12 +71,13 @@ platform :ios do
       export_options: {
         method: "app-store",
         teamID: "L82V95LG93",
-        signingStyle: "automatic"
+        signingStyle: "manual",
+        provisioningProfileSpecifier: "iOS App Store"
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
-      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app -allowProvisioningUpdates"
+      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app"
     )
   end
 
