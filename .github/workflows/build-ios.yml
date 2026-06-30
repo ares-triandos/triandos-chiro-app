@@ -51,7 +51,10 @@ jobs:
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
-        run: bundle exec fastlane ios build_testflight
+          CI: true
+          FASTLANE_USER: ${{ secrets.APPLE_ID }}
+          FASTLANE_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+        run: bundle exec fastlane ios build_testflight --verbose
 
       - name: Notify on success
         if: success()

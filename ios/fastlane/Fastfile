@@ -15,13 +15,16 @@ platform :ios do
       export_options: {
         method: "app-store",
         teamID: "L82V95LG93",
-        signingStyle: "automatic"
+        signingStyle: "automatic",
+        stripSwiftSymbols: true
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
       skip_package_pkg: true,
-      destination_timeout: 360
+      destination_timeout: 360,
+      silent: true,
+      suppress_xcode_output: false
     )
 
     upload_to_testflight(
@@ -29,13 +32,12 @@ platform :ios do
       apple_id: ENV["APPLE_ID"],
       app_password: ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"],
       skip_waiting_for_build_processing: true,
-      team_id: "L82V95LG93"
+      skip_submission: false,
+      team_id: "L82V95LG93",
+      verbose: false
     )
 
-    slack(
-      message: "✅ Triandos Chiro iOS build successfully submitted to TestFlight",
-      slack_url: ENV["SLACK_WEBHOOK"] || ""
-    )
+    puts "✅ Build submitted to TestFlight successfully!"
   end
 
   desc "Build without uploading"
@@ -56,15 +58,12 @@ platform :ios do
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
-      skip_package_ipa: false
+      skip_package_ipa: false,
+      silent: true
     )
   end
 
   error do |lane, exception|
-    slack(
-      message: "❌ Triandos Chiro iOS build failed: #{exception}",
-      success: false,
-      slack_url: ENV["SLACK_WEBHOOK"] || ""
-    )
+    puts "❌ Build failed: #{exception}"
   end
 end
