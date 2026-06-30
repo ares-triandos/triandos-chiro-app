@@ -21,7 +21,7 @@ platform :ios do
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
       skip_package_pkg: true,
-      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app"
+      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app -allowProvisioningUpdates"
     )
 
     upload_to_testflight(
@@ -56,7 +56,7 @@ platform :ios do
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
-      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app"
+      xcargs: "DEVELOPMENT_TEAM=L82V95LG93 PRODUCT_BUNDLE_IDENTIFIER=com.triandoschiro.app -allowProvisioningUpdates"
     )
   end
 
