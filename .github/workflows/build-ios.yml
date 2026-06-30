@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build iOS & Submit to TestFlight
 
 concurrency:
   group: ios-testflight-${{ github.ref }}
@@ -24,17 +24,39 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+          working-directory: ios
 
-      - name: Build iOS app
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Install CocoaPods dependencies
+        working-directory: ios
+        run: |
+          gem install cocoapods
+          pod install --repo-update
+
+      - name: Setup Fastlane
+        working-directory: ios
+        run: bundle install
+
+      - name: Build and submit to TestFlight
+        working-directory: ios
         env:
-          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
-        run: npx eas-cli build --platform ios --profile preview --wait
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+        run: bundle exec fastlane ios build_testflight
 
-      - name: Submit to TestFlight
-        env:
-          EXPO_TOKEN: ${{ secrets.EAS_TOKEN }}
-          EXPO_APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
-        run: npx eas-cli submit --platform ios --profile preview --latest --wait
+      - name: Notify on success
+        if: success()
+        run: echo "✅ Build complete and submitted to TestFlight"
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "❌ Build failed - check logs above"

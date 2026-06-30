@@ -1,0 +1,70 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and submit to TestFlight"
+  lane :build_testflight do
+    setup_ci if is_ci
+
+    build_app(
+      workspace: "TriandosChiro.xcworkspace",
+      scheme: "TriandosChiro",
+      configuration: "Release",
+      derived_data_path: "build",
+      destination: "generic/platform=iOS",
+      export_method: "app-store",
+      export_options: {
+        method: "app-store",
+        teamID: "L82V95LG93",
+        signingStyle: "automatic"
+      },
+      output_directory: "build",
+      output_name: "TriandosChiro.ipa",
+      skip_package_ipa: false,
+      skip_package_pkg: true,
+      destination_timeout: 360
+    )
+
+    upload_to_testflight(
+      app_identifier: "com.triandoschiro.app",
+      apple_id: ENV["APPLE_ID"],
+      app_password: ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"],
+      skip_waiting_for_build_processing: true,
+      team_id: "L82V95LG93"
+    )
+
+    slack(
+      message: "✅ Triandos Chiro iOS build successfully submitted to TestFlight",
+      slack_url: ENV["SLACK_WEBHOOK"] || ""
+    )
+  end
+
+  desc "Build without uploading"
+  lane :build_only do
+    setup_ci if is_ci
+
+    build_app(
+      workspace: "TriandosChiro.xcworkspace",
+      scheme: "TriandosChiro",
+      configuration: "Release",
+      derived_data_path: "build",
+      destination: "generic/platform=iOS",
+      export_method: "app-store",
+      export_options: {
+        method: "app-store",
+        teamID: "L82V95LG93",
+        signingStyle: "automatic"
+      },
+      output_directory: "build",
+      output_name: "TriandosChiro.ipa",
+      skip_package_ipa: false
+    )
+  end
+
+  error do |lane, exception|
+    slack(
+      message: "❌ Triandos Chiro iOS build failed: #{exception}",
+      success: false,
+      slack_url: ENV["SLACK_WEBHOOK"] || ""
+    )
+  end
+end

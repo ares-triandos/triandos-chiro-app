@@ -1,15 +1,55 @@
-node_modules
-.expo
-.expo-shared
-dist
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Production / Build
+/build
+dist/
+*.jsbundle
+*.bundle
+
+# iOS
+ios/Pods/
+ios/Podfile.lock
+ios/build/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# Android
+android/.gradle
+android/local.properties
+android/app/release/
+
+# Fastlane
+ios/fastlane/report.xml
+ios/fastlane/Preview.html
+ios/fastlane/screenshots
+ios/fastlane/test_output
+
+# Secrets & Environment
 .env
 .env.local
 .env.*.local
+GoogleService-Info.plist
+google-services.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Misc
+.cache/
+dist/
+coverage/
