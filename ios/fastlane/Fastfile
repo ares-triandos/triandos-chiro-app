@@ -15,16 +15,12 @@ platform :ios do
       export_options: {
         method: "app-store",
         teamID: "L82V95LG93",
-        signingStyle: "automatic",
-        stripSwiftSymbols: true
+        signingStyle: "automatic"
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
-      skip_package_pkg: true,
-      destination_timeout: 360,
-      silent: true,
-      suppress_xcode_output: false
+      skip_package_pkg: true
     )
 
     upload_to_testflight(
@@ -58,8 +54,7 @@ platform :ios do
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
-      skip_package_ipa: false,
-      silent: true
+      skip_package_ipa: false
     )
   end
 
