@@ -1,0 +1,18 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Patients can read/write their own data
+    match /patients/{userId} {
+      allow read, write: if request.auth.uid == userId;
+      
+      // Nested appointments
+      match /appointments/{appointmentId} {
+        allow read, write: if request.auth.uid == userId;
+      }
+      
+      // Nested scripts (read-only for patients)
+      match /scripts/{scriptId} {
+        allow read: if request.auth.uid == userId;
+      }
+    }
+  }
+}
