@@ -20,7 +20,8 @@ platform :ios do
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
       skip_package_ipa: false,
-      skip_package_pkg: true
+      skip_package_pkg: true,
+      xcargs: "DEVELOPMENT_TEAM=L82V95LG93"
     )
 
     upload_to_testflight(
@@ -54,7 +55,8 @@ platform :ios do
       },
       output_directory: "build",
       output_name: "TriandosChiro.ipa",
-      skip_package_ipa: false
+      skip_package_ipa: false,
+      xcargs: "DEVELOPMENT_TEAM=L82V95LG93"
     )
   end
 
